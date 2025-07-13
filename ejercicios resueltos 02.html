@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tres cajas flotantes</title>
+    <style>
+        .caja {
+            float: left;
+            width: 30%;
+            margin: 1.5%;
+            height: 100px;
+            background: coral;
+            color: white;
+            font-size: 2em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+            border-radius: 10px;
+        }
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <div class="clearfix">
+        <div class="caja">A</div>
+        <div class="caja">B</div>
+        <div class="caja">C</div>
+    </div>
+</body>
+</html>
+
+<!-- Diseño de dos columnas usando float -->
+<style>
+    .columna {
+        float: left;
+        width: 45%;
+        margin: 2.5%;
+        background-color: #f0f0f0;
+        padding: 10px;
+        box-sizing: border-box;
+        border-radius: 8px;
+        min-height: 80px;
+    }
+    .clearfix2::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+</style>
+<div class="clearfix2">
+    <div class="columna">Columna izquierda</div>
+    <div class="columna">Columna derecha</div>
+</div>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diseño dos columnas y pie de página</title>
+    <style>
+        .col-izq {
+            float: left;
+            width: 40%;
+            background: #bbb;
+            min-height: 120px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .col-der {
+            float: right;
+            width: 40%;
+            background: #ccc;
+            min-height: 120px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .pie {
+            clear: both;
+            text-align: center;
+            padding: 10px;
+            background: #999;
+            font-weight: bold;
+            font-size: 1.2em;
+            border-radius: 0 0 8px 8px;
+        }
+        body {
+            max-width: 800px;
+            margin: 40px auto;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra de navegación horizontal -->
+    <style>
+        ul.nav {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 30px 0;
+            overflow: hidden;
+            background: #222;
+            border-radius: 8px 8px 0 0;
+        }
+        ul.nav li {
+            float: left;
+            margin-right: 20px;
+            background: #333;
+            color: white;
+            padding: 10px 24px;
+            font-size: 1.1em;
+            border-right: 1px solid #444;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        ul.nav li:last-child {
+            margin-right: 0;
+            border-right: none;
+        }
+        ul.nav li:hover {
+            background: #555;
+        }
+    </style>
+    <ul class="nav">
+        <li>Inicio</li>
+        <li>Servicios</li>
+        <li>Contacto</li>
+    </ul>
+    <div class="col-izq">Columna Izquierda</div>
+    <div class="col-der">Columna Derecha</div>
+    <div class="pie">Pie de Página Centrado</div>
+</body>
+</html>

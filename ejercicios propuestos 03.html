@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botón fijo en esquina superior izquierda</title>
+    <style>
+        .fijo {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background-color: orange;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 1em;
+            font-weight: bold;
+            box-shadow: 0 2px 8px #0002;
+            cursor: pointer;
+        }
+        body {
+            height: 2000px;
+            /* Para mostrar el efecto al hacer scroll */
+        }
+    </style>
+</head>
+<body>
+    <button class="fijo">Inicio</button>
+</body>
+</html>

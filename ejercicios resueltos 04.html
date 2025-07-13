@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarjeta con imagen flotante</title>
+    <style>
+        .card {
+            width: 400px;
+            overflow: hidden;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background: #fafafa;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px #0001;
+        }
+        .card img {
+            float: left;
+            margin-right: 10px;
+            width: 100px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="avatar">
+        <p><strong>Nombre del usuario</strong><br>Descripción breve del perfil o contenido.</p>
+    </div>
+</body>
+</html>
+
+<!-- Contenedor de varias cajas flotantes que no colapsa -->
+<style>
+    .contenedor {
+        overflow: hidden;
+        background: #ddd;
+        margin-top: 30px;
+        border-radius: 8px;
+        padding: 10px 0;
+    }
+    .caja {
+        float: left;
+        width: 30%;
+        margin: 1%;
+        background: #aaa;
+        height: 100px;
+        color: #222;
+        font-size: 2em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+    }
+</style>
+<div class="contenedor">
+    <div class="caja">1</div>
+    <div class="caja">2</div>
+    <div class="caja">3</div>
+</div>
+</html>

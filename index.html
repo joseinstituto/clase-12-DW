@@ -1,0 +1,693 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios de Posicionamiento CSS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --color-bg: #f0f4f8;
+            --color-bg-gradient: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
+            --color-primary: #1a4480;
+            --color-secondary: #3a69c7;
+            --color-accent: #ff6b35;
+            --color-card: #ffffff;
+            --color-card-border: #e2e8f0;
+            --color-nav-bg: #1a4480;
+            --color-nav-hover: #ff6b35;
+            --color-nav-active: #ffffff;
+            --color-card-shadow: rgba(26, 68, 128, 0.1);
+            --color-card-shadow-hover: rgba(26, 68, 128, 0.2);
+            --color-footer-bg: #1a2b4d;
+            --color-footer-text: #cbd5e1;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background: var(--color-bg-gradient);
+            color: #2d3748;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--color-primary) 0%, #0d2b5a 100%);
+            color: #fff;
+            padding: 70px 0 30px;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--color-accent);
+        }
+        
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        header p {
+            margin: 0;
+            font-size: 1.25rem;
+            color: #e2e8f0;
+            font-weight: 400;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .header-decoration {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            z-index: 1;
+            opacity: 0.1;
+        }
+        
+        .decoration-item {
+            width: 8px;
+            height: 8px;
+            background: var(--color-accent);
+            border-radius: 50%;
+            margin: 0 12px;
+        }
+        
+        .banner {
+            background: linear-gradient(to right, #1a4480, #0d2b5a);
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .banner marquee {
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 5px 0;
+        }
+        
+        .banner marquee i {
+            color: var(--color-accent);
+            margin-right: 10px;
+        }
+        
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            background: var(--color-nav-bg);
+            padding: 20px 15px;
+            position: sticky;
+            top: 50px;
+            z-index: 90;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav a {
+            color: var(--color-nav-active);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            padding: 10px 24px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Montserrat', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        nav a::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--color-nav-hover);
+            z-index: -1;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            border-radius: 50px;
+        }
+        
+        nav a:hover, nav a:focus {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        nav a:hover::before, nav a:focus::before {
+            transform: translateY(0);
+        }
+        
+        nav a i {
+            font-size: 1.1rem;
+        }
+        
+        main {
+            flex: 1;
+            max-width: 1300px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--color-primary);
+            font-weight: 700;
+            display: inline-block;
+            padding: 0 20px;
+            background: var(--color-bg);
+            position: relative;
+            z-index: 2;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--color-secondary), transparent);
+            z-index: 1;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .card {
+            background: var(--color-card);
+            border-radius: 16px;
+            box-shadow: 0 8px 25px var(--color-card-shadow);
+            padding: 35px 25px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid var(--color-card-border);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--color-accent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px var(--color-card-shadow-hover);
+        }
+        
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .card-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(26, 68, 128, 0.08);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--color-primary);
+            font-size: 28px;
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover .card-icon {
+            background: var(--color-accent);
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .card h3 {
+            margin: 0 0 15px 0;
+            font-size: 1.4rem;
+            color: var(--color-primary);
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .card p {
+            color: #4a5568;
+            font-size: 1.05rem;
+            font-weight: 400;
+            flex: 1;
+            margin-bottom: 20px;
+        }
+        
+        .card .btn {
+            display: inline-block;
+            background: var(--color-primary);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            font-family: 'Montserrat', sans-serif;
+            margin-top: auto;
+        }
+        
+        .card .btn:hover {
+            background: transparent;
+            color: var(--color-primary);
+            border-color: var(--color-primary);
+            transform: translateY(-3px);
+        }
+        
+        .card .btn i {
+            margin-left: 8px;
+            font-size: 0.9rem;
+        }
+        
+        footer {
+            background: var(--color-footer-bg);
+            color: var(--color-footer-text);
+            padding: 40px 0 20px;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+        
+        .footer-column h3 {
+            color: white;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .footer-column h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--color-accent);
+        }
+        
+        .footer-column p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--color-accent);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.95rem;
+            color: #94a3b8;
+        }
+        
+        @media (max-width: 900px) {
+            header {
+                padding: 50px 0 25px;
+            }
+            
+            header h1 {
+                font-size: 2.3rem;
+            }
+            
+            nav {
+                top: 45px;
+                padding: 15px 10px;
+                gap: 10px;
+            }
+            
+            nav a {
+                padding: 8px 16px;
+                font-size: 0.95rem;
+            }
+            
+            .grid {
+                gap: 20px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            header {
+                padding: 40px 0 20px;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            header p {
+                font-size: 1.1rem;
+            }
+            
+            .banner marquee {
+                font-size: 0.95rem;
+            }
+            
+            nav {
+                top: 40px;
+                padding: 12px 8px;
+                gap: 8px;
+            }
+            
+            nav a {
+                padding: 7px 14px;
+                font-size: 0.9rem;
+            }
+            
+            nav a i {
+                display: none;
+            }
+            
+            .section-title h2 {
+                font-size: 1.6rem;
+            }
+            
+            .card {
+                padding: 25px 20px;
+            }
+            
+            .card h3 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-decoration">
+            <div class="decoration-item"></div>
+            <div class="decoration-item"></div>
+            <div class="decoration-item"></div>
+            <div class="decoration-item"></div>
+            <div class="decoration-item"></div>
+        </div>
+        <div class="header-content">
+            <h1>Ejercicios de Posicionamiento CSS</h1>
+            <p>Explora y aprende sobre <b>position</b>, <b>float</b>, <b>sticky</b> y más con ejemplos prácticos y modernos.</p>
+        </div>
+    </header>
+    
+    <div class="banner">
+        <marquee behavior="scroll" direction="left">
+            <i class="fas fa-star"></i> ¡Aprende posicionamiento CSS con estos ejercicios prácticos! - 
+            Nuevos ejercicios añadidos cada semana - 
+            Acceso a soluciones detalladas - 
+            Material completamente gratuito
+        </marquee>
+    </div>
+    
+    <nav>
+        <a href="ejercicios propuestos 01.html"><i class="fas fa-file-alt"></i> Propuesto 1</a>
+        <a href="ejercicios propuestos 02.html"><i class="fas fa-file-alt"></i> Propuesto 2</a>
+        <a href="ejercicios propuestos 03.html"><i class="fas fa-file-alt"></i> Propuesto 3</a>
+        <a href="ejercicios propuestos 04.html"><i class="fas fa-file-alt"></i> Propuesto 4</a>
+        <a href="ejercicios propuestos 05.html"><i class="fas fa-file-alt"></i> Propuesto 5</a>
+        <a href="ejercicios propuestos 2 01.html"><i class="fas fa-file-alt"></i> Propuestos 2-01</a>
+        <a href="ejercicios propuestos 2 02.html"><i class="fas fa-file-alt"></i> Propuestos 2-02</a>
+        <a href="ejercicios propuestos 2 03.html"><i class="fas fa-file-alt"></i> Propuestos 2-03</a>
+        <a href="ejercicios propuestos 2 04.html"><i class="fas fa-file-alt"></i> Propuestos 2-04</a>
+        <a href="ejercicios propuestos 2 05.html"><i class="fas fa-file-alt"></i> Propuestos 2-05</a>
+        <a href="ejercicios resueltos 01.html"><i class="fas fa-check-circle"></i> Resuelto 1</a>
+        <a href="ejercicios resueltos 02.html"><i class="fas fa-check-circle"></i> Resuelto 2</a>
+        <a href="ejercicios resueltos 03.html"><i class="fas fa-check-circle"></i> Resuelto 3</a>
+        <a href="ejercicios resueltos 04.html"><i class="fas fa-check-circle"></i> Resuelto 4</a>
+        <a href="ejercicios resueltos 05.html"><i class="fas fa-check-circle"></i> Resuelto 5</a>
+    </nav>
+    
+    <main>
+        <div class="section-title">
+            <h2>Selecciona un ejercicio para ver su solución</h2>
+        </div>
+        
+        <div class="grid">
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-arrows-alt"></i>
+                </div>
+                <h3>Propuesto 1</h3>
+                <p>Mueve un párrafo usando <b>position: relative</b>. Aprende a desplazar elementos manteniendo su espacio original.</p>
+                <a href="ejercicios propuestos 01.html" class="btn">Ver ejercicio <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-vector-square"></i>
+                </div>
+                <h3>Propuesto 2</h3>
+                <p>Posiciona una caja en la esquina inferior derecha con <b>absolute</b>. Domina el posicionamiento absoluto en contenedores.</p>
+                <a href="ejercicios propuestos 02.html" class="btn">Ver ejercicio <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-thumbtack"></i>
+                </div>
+                <h3>Propuesto 3</h3>
+                <p>Botón fijo en pantalla con <b>position: fixed</b>. Crea elementos que permanecen visibles al hacer scroll.</p>
+                <a href="ejercicios propuestos 03.html" class="btn">Ver ejercicio <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-sticky-note"></i>
+                </div>
+                <h3>Propuesto 4</h3>
+                <p>Encabezado sticky y otros ejemplos de <b>sticky</b>. Elementos que se fijan al llegar al borde superior.</p>
+                <a href="ejercicios propuestos 04.html" class="btn">Ver ejercicio <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-balance-scale"></i>
+                </div>
+                <h3>Propuesto 5</h3>
+                <p>Comparación entre <b>relative</b> y <b>absolute</b>. Entiende las diferencias clave entre estos posicionamientos.</p>
+                <a href="ejercicios propuestos 05.html" class="btn">Ver ejercicio <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <h3>Propuestos 2-01</h3>
+                <p>Menú fijo en la parte superior con <b>position: fixed</b>. Implementa navegación persistente en tu sitio.</p>
+                <a href="ejercicios propuestos 2 01.html" class="btn">Ver ejercicio <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-tag"></i>
+                </div>
+                <h3>Propuestos 2-02</h3>
+                <p>Etiqueta flotante con <b>position: absolute</b> en una tarjeta. Añade elementos destacados a tus componentes.</p>
+                <a href="ejercicios propuestos 2 02.html" class="btn">Ver ejercicio <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-crosshairs"></i>
+                </div>
+                <h3>Propuestos 2-03</h3>
+                <p>Botón centrado con <b>position: absolute</b> y <b>transform</b>. Centra elementos con precisión.</p>
+                <a href="ejercicios propuestos 2 03.html" class="btn">Ver ejercicio <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-image"></i>
+                </div>
+                <h3>Propuestos 2-04</h3>
+                <p>Imagen fija al hacer scroll con <b>position: fixed</b>. Crea efectos visuales interesantes durante el desplazamiento.</p>
+                <a href="ejercicios propuestos 2 04.html" class="btn">Ver ejercicio <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-columns"></i>
+                </div>
+                <h3>Propuestos 2-05</h3>
+                <p>Barra lateral sticky con <b>position: sticky</b>. Implementa navegación lateral que sigue al usuario.</p>
+                <a href="ejercicios propuestos 2 05.html" class="btn">Ver ejercicio <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-water"></i>
+                </div>
+                <h3>Resuelto 1</h3>
+                <p>Imagen flotante, cajas y ejemplos de <b>float</b>. Domina la técnica tradicional de diseño con float.</p>
+                <a href="ejercicios resueltos 01.html" class="btn">Ver solución <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-th-large"></i>
+                </div>
+                <h3>Resuelto 2</h3>
+                <p>Tres cajas flotantes y dos columnas con <b>float</b>. Crea diseños de varias columnas con esta técnica.</p>
+                <a href="ejercicios resueltos 02.html" class="btn">Ver solución <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-expand-alt"></i>
+                </div>
+                <h3>Resuelto 3</h3>
+                <p>Evitar colapso de contenedores y pie de página con <b>clear</b>. Soluciona problemas comunes con float.</p>
+                <a href="ejercicios resueltos 03.html" class="btn">Ver solución <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-id-card"></i>
+                </div>
+                <h3>Resuelto 4</h3>
+                <p>Tarjeta con imagen flotante y contenedor de cajas. Diseña componentes atractivos con float.</p>
+                <a href="ejercicios resueltos 04.html" class="btn">Ver solución <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-layout"></i>
+                </div>
+                <h3>Resuelto 5</h3>
+                <p>Diseño de columnas, pie de página y barra de navegación flotada. Layout completo usando float.</p>
+                <a href="ejercicios resueltos 05.html" class="btn">Ver solución <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Sobre este proyecto</h3>
+                <p>Una colección completa de ejercicios prácticos para dominar el posicionamiento CSS, desde conceptos básicos hasta técnicas avanzadas.</p>
+                <p>Todos los materiales son gratuitos y de código abierto, diseñados para ayudar a desarrolladores a mejorar sus habilidades.</p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Recursos útiles</h3>
+                <p><i class="fas fa-book"></i> Documentación oficial de CSS</p>
+                <p><i class="fas fa-video"></i> Tutoriales en video</p>
+                <p><i class="fas fa-code"></i> Ejemplos de código</p>
+                <p><i class="fas fa-project-diagram"></i> Plantillas descargables</p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Conéctate con nosotros</h3>
+                <p>Síguenos en nuestras redes sociales para recibir actualizaciones sobre nuevos ejercicios y tutoriales.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 Ejercicios de Posicionamiento CSS. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>

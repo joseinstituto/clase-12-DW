@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú fijo en la parte superior</title>
+    <style>
+        .menu {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: black;
+            color: white;
+            padding: 10px;
+            left: 0;
+            z-index: 100;
+            text-align: center;
+            font-size: 1.2em;
+            box-shadow: 0 2px 8px #0002;
+        }
+        body {
+            margin: 0;
+            padding-top: 48px;
+            /* Espacio para el menú fijo */
+        }
+    </style>
+</head>
+<body>
+    <nav class="menu">Menú Principal</nav>
+    <div style="height: 1500px; background: #f9f9f9; padding: 20px;">Contenido de la página para hacer scroll...</div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evitar colapso de contenedor flotante</title>
+    <style>
+        .padre {
+            overflow: hidden;
+            background: #eee;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+        }
+        .hijo {
+            float: left;
+            width: 50%;
+            height: 100px;
+            background: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="padre">
+        <div class="hijo"></div>
+        <div class="hijo"></div>
+    </div>
+</body>
+</html>
+
+<!-- Pie de página que no se superpone a cajas flotantes -->
+<style>
+    .izquierda {
+        float: left;
+        width: 50%;
+        background: lightblue;
+        min-height: 80px;
+        box-sizing: border-box;
+        padding: 10px;
+    }
+    .derecha {
+        float: right;
+        width: 50%;
+        background: lightgreen;
+        min-height: 80px;
+        box-sizing: border-box;
+        padding: 10px;
+    }
+    .footer {
+        clear: both;
+        background: gray;
+        text-align: center;
+        padding: 10px;
+        color: white;
+        font-weight: bold;
+        border-radius: 0 0 8px 8px;
+    }
+</style>
+<div class="izquierda">Izquierda</div>
+<div class="derecha">Derecha</div>
+<div class="footer">Pie de página</div>
+</html>
